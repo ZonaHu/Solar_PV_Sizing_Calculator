@@ -1,25 +1,83 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.css'
+import { Button, message, Steps, theme } from 'antd';
+import { MyLocation } from './components/MyLocation'
+import { ElectricityLoadEstimation } from './components/ElectricityLoadEstimation'
+import { EstimationParameters } from './components/EstimationParameters'
+import { Results } from './components/Results'
+import { SolarPanelParameters } from './components/SolarPanelParameters'
+const steps = [
+  {
+    title: 'My Location',
+    content: MyLocation,
+  },
+  {
+    title: 'Solar Panel Parameters',
+    content: SolarPanelParameters,
+  },
+  {
+    title: 'Electricity Load Estimation',
+    content: ElectricityLoadEstimation,
+  },
+  {
+    title: 'Estimation Parameters',
+    content: EstimationParameters,
+  },
+  {
+    title: 'Results',
+    content: Results,
+  },
+];
 
-function App() {
+const App = () => {
+  const { token } = theme.useToken();
+  const [current, setCurrent] = useState(0);
+
+  const next = () => {
+    setCurrent(current + 1);
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+
+  const items = steps.map((item) => ({ key: item.title, title: item.title }));
+
+  const contentStyle = {
+    lineHeight: '260px',
+    textAlign: 'center',
+    color: token.colorTextTertiary,
+    backgroundColor: token.colorFillAlter,
+    borderRadius: token.borderRadiusLG,
+    border: `1px dashed ${token.colorBorder}`,
+    marginTop: 16,
+  };
+  const onChange = (value) => {
+    setCurrent(value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Steps current={current} items={items} onChange={onChange} />
+      <div style={contentStyle}>{steps[current].content()}</div>
+      <div style={{ marginTop: 24 }}>
+        {current < steps.length - 1 && (
+          <Button type="primary" onClick={() => next()}>
+            Next
+          </Button>
+        )}
+        {current === steps.length - 1 && (
+          <Button type="primary" onClick={() => message.success('Processing complete!')}>
+            Done
+          </Button>
+        )}
+        {current > 0 && (
+          <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+            Previous
+          </Button>
+        )}
+      </div>
+    </>
   );
-}
+};
 
 export default App;

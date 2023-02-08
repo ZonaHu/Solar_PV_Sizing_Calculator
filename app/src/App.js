@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './App.css'
-import { Button, message, Steps, theme } from 'antd';
+import { Button, message, Steps, theme, Typography } from 'antd';
+
 import { MyLocation } from './components/MyLocation'
 import { ElectricityLoadEstimation } from './components/ElectricityLoadEstimation'
 import { EstimationParameters } from './components/EstimationParameters'
 import { Results } from './components/Results'
 import { SolarPanelParameters } from './components/SolarPanelParameters'
+
+const { Title } = Typography;
+
 const steps = [
   {
     title: 'My Location',
@@ -57,6 +61,7 @@ const App = () => {
   };
   return (
     <>
+      <Typography><Title level={2}> Solar Panel and Battery Size Calculator </Title></Typography>
       <Steps current={current} items={items} onChange={onChange} />
       <div style={contentStyle}>{steps[current].content()}</div>
       <div style={{ marginTop: 24 }}>

@@ -1,7 +1,9 @@
 import {Card} from 'antd';
 import {Divider} from 'antd';
-import {Button, Input, InputNumber} from 'antd';
+import {Button, Input, InputNumber, Typography} from 'antd';
 import {useState} from 'react';
+
+const { Title, Paragraph } = Typography;
 
 export const MyLocation = () => {
 
@@ -9,22 +11,22 @@ export const MyLocation = () => {
     const [status2, setStatus2] = useState('error')
     return <div>
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
-            <h1>Welcome!</h1>
-            <p>
+            <Title level={3}>Welcome!</Title>
+            <Paragraph>
                 This calculator is intended for homeowners and small to medium businesses to determine how many solar
                 panels and how large a storage battery to buy to achieve a certain level of grid independence, based on
-                your location, solar panel parameters, and electricity usages.
-            </p>
+                your location, solar panel parameters, and electricity usages. The algorithm accounts for <b> multiple roof segments</b>.
+            </Paragraph>
 
-            <p>
+            <Paragraph>
                 This calculator uses <a href="https://cs.uwaterloo.ca/~fkazhami/papers/synthetic_trace_generation.pdf">machine
                 learning</a> to estimate your hourly electricity usage and a <a
                 href="https://cs.uwaterloo.ca/~fkazhami/papers/robust-practical-approaches-8.pdf">robust statistical
                 algorithm</a> to optimize the amount of solar panels and battery storage needed to fulfill a certain
                 portion of your electricity needs with minimum cost.
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
                 To use this calculator, please prepare the following:
                 <li className="li-dot"><b>Your location</b>, in terms of longitude and latitude. Later this page you can
                     also detect your location with your IP address or enter your city.</li>
@@ -42,30 +44,30 @@ export const MyLocation = () => {
                         href="https://www.energysage.com/solar/">EnergySage</a> provides great instructions and example
                     prices.
                 </li>
-            </p>
+            </Paragraph>
         </Card>
         <Card style={{width: '90%', margin: '50px', textAlign: 'center'}}>
-            <h1 style={{textAlign: 'left'}}>Your Location</h1>
-            <p>
+            <Title level={3} style={{textAlign: 'left'}}>Your Location</Title>
+            <Paragraph>
                 <b>Location</b>: Your location is needed to compute how much electricity your solar panels can generate.
                 Enter your locations using one of the following ways:
-            </p>
+            </Paragraph>
 
-            <p>
+            <Paragraph>
                 <b>Autofill location using your IP address:</b>
                 <Button style={{marginLeft: '10px'}}>Detect Location</Button>
-            </p>
+            </Paragraph>
 
             <Divider>OR</Divider>
 
-            <p>
+            <Paragraph>
                 <b>Enter your city:</b>
                 <Input style={{width: '200px', borderBottom: '1px solid #000', marginLeft: '10px', borderRadius: 0}}
                        placeholder="your city" bordered={false}/>
-            </p>
+            </Paragraph>
             <Divider>OR</Divider>
 
-            <p>
+            <Paragraph>
                 <b>Enter your latitude and longitude: </b>
                 <InputNumber
                     style={{width: '100px', marginLeft: '10px'}}
@@ -100,7 +102,7 @@ export const MyLocation = () => {
                         }
                     }}
                 />
-            </p>
+            </Paragraph>
 
             <Divider>OR</Divider>
 

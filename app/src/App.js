@@ -62,7 +62,7 @@ const App = () => {
     return (
         <>
             <Typography><Title level={2}> Solar Panel and Battery Size Calculator </Title></Typography>
-            <Steps current={current} items={items} onChange={onChange}/>
+            <Steps style={{marginTop: 36}} current={current} items={items} onChange={onChange}/>
             <div style={contentStyle}>{steps[current].content()}</div>
             <div style={{marginTop: 24}}>
                 {current < steps.length - 1 && (

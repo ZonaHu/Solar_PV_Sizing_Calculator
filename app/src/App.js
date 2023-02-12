@@ -45,6 +45,9 @@ const App = () => {
         setCurrent(current - 1);
     };
 
+    const [status1, setStatus1] = useState('error')
+    const [status2, setStatus2] = useState('error')
+    
     const items = steps.map((item) => ({key: item.title, title: item.title}));
 
     const contentStyle = {
@@ -63,7 +66,7 @@ const App = () => {
         <>
             <Typography><Title level={2}> Solar Panel and Battery Size Calculator </Title></Typography>
             <Steps style={{marginTop: 36}} current={current} items={items} onChange={onChange}/>
-            <div style={contentStyle}>{steps[current].content()}</div>
+            <div style={contentStyle}>{steps[current].content({ status1, setStatus1, status2, setStatus2 })}</div>
             <div style={{marginTop: 24}}>
                 {current < steps.length - 1 && (
                     <Button type="primary" onClick={() => next()}>

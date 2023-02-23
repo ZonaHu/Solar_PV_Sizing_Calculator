@@ -47,7 +47,7 @@ const App = () => {
 
     const [status1, setStatus1] = useState('error')
     const [status2, setStatus2] = useState('error')
-    
+
     const items = steps.map((item) => ({key: item.title, title: item.title}));
 
     const contentStyle = {
@@ -62,11 +62,29 @@ const App = () => {
     const onChange = (value) => {
         setCurrent(value);
     };
+    const getElement = (current) => {
+        if (current === 0) {
+            return <MyLocation/>
+        } else if (current === 1) {
+            return <SolarPanelParameters/>
+        } else if (current === 2) {
+            return <ElectricityLoadEstimation/>
+        } else if (current === 3) {
+            return <EstimationParameters/>
+        } else {
+            return <Results/>
+        }
+    }
     return (
         <>
             <Typography><Title level={2}> Solar Panel and Battery Size Calculator </Title></Typography>
             <Steps style={{marginTop: 36}} current={current} items={items} onChange={onChange}/>
-            <div style={contentStyle}>{steps[current].content({ status1, setStatus1, status2, setStatus2 })}</div>
+            <div style={contentStyle}>
+                {
+                    getElement(current)
+
+                }
+            </div>
             <div style={{marginTop: 24}}>
                 {current < steps.length - 1 && (
                     <Button type="primary" onClick={() => next()}>

@@ -1,19 +1,20 @@
-import {Card} from 'antd';
-import {Divider} from 'antd';
-import {Button, Input, InputNumber, Typography} from 'antd';
+import {Button, Card, Divider, Input, InputNumber, Typography} from 'antd';
 import {useState} from 'react';
 
-const { Title, Paragraph } = Typography;
+const {Title, Paragraph} = Typography;
 
-export const MyLocation = ({ status1, setStatus1, status2, setStatus2 }) => {
-    
+export const MyLocation = () => {
+
+    const [status1, setStatus1] = useState('error')
+    const [status2, setStatus2] = useState('error')
     return <div>
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
             <Title level={3}>Welcome!</Title>
             <Paragraph>
                 This calculator is intended for homeowners and small to medium businesses to determine how many solar
                 panels and how large a storage battery to buy to achieve a certain level of grid independence, based on
-                your location, solar panel parameters, and electricity usages. The algorithm accounts for <b> multiple roof segments</b>.
+                your location, solar panel parameters, and electricity usages. The algorithm accounts for <b> multiple
+                roof segments</b>.
             </Paragraph>
 
             <Paragraph>

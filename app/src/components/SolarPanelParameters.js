@@ -119,7 +119,7 @@ export const SolarPanelParameters = () => {
     };
 
     const handleOk4 = () => {
-        setIsAziModalOpen(false);
+        setIsModalOpen4(false);
     };
 
     const handleCancel4 = () => {
@@ -261,13 +261,126 @@ export const SolarPanelParameters = () => {
             </div>
         </Modal>
         <Modal title="System Losses" open={isSLModalOpen} onOk={handleOk3} onCancel={handleCancel3}>
+            <div>
+                <p>The system losses account for performance losses you would expect in a real system that are not
+                    explicitly calculated by the PVWatts<sup>®</sup> model equations.</p>
 
+                <p>The default value for the system losses of 14% is based on the categories in the table below, and
+                    calculated as follows:</p>
+
+                <p style={{textAlign: 'center'}}>
+                    100% × [ 1- ( 1 - 0.02 ) × ( 1 - 0.03 ) × ( 1 - 0.02 ) × ( 1 - 0.02 ) ×
+                    ( 1 - 0.005 ) × ( 1 - 0.015) × ( 1- 0.01 ) × ( 1 - 0.03) ] = 14%
+                </p>
+
+                <p>PVWatts<sup>®</sup> calculates temperature-related losses as a function of the cell temperature, so
+                    you should not include temperature loss in the system loss percentage.</p>
+
+                <p>If you want to use a value other than the default, you can specify values for the categories listed
+                    in the table below and calculate the new total value as above.</p>
+
+                <table style={{textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', fontSize: '14px'}}>
+                    <caption style={{textAlign: 'center'}}>Default values for the system loss categories</caption>
+                    <tbody>
+                    <tr>
+                        <th>Category</th>
+                        <th>Default Value (%)</th>
+                    </tr>
+                    <tr>
+                        <td>Soiling</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Shading</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Snow</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Mismatch</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Wiring</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Connections</td>
+                        <td>0.5</td>
+                    </tr>
+                    <tr>
+                        <td>Light-Induced Degradation</td>
+                        <td>1.5</td>
+                    </tr>
+                    <tr>
+                        <td>Nameplate Rating</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Availability</td>
+                        <td>3</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </Modal>
         <Modal title="Module Type" open={isModalOpen4} onOk={handleOk4} onCancel={handleCancel4}>
-
+            <div>
+                <p>The module type describes the photovoltaic modules in the array. If you do not have information about
+                    the modules in the system, use the default Standard module type. Otherwise, you can use information
+                    from the module data sheet and the table below to choose the module type.</p>
+                <table style={{textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', fontSize: '14px'}}>
+                    <caption style={{textAlign: 'center'}}>Module Type Options</caption>
+                    <tbody>
+                    <tr>
+                        <th>PVWatts<sup>®</sup> Module Type</th>
+                        <th>Cell Material</th>
+                        <th>Approximate Nominal Efficiency</th>
+                        <th>Module Cover</th>
+                        <th>Temperature Coefficient of Power</th>
+                    </tr>
+                    <tr>
+                        <td>Standard</td>
+                        <td>Crystalline Silicon</td>
+                        <td>15%</td>
+                        <td>Glass</td>
+                        <td>-0.47 %/°C</td>
+                    </tr>
+                    <tr>
+                        <td>Premium</td>
+                        <td>Crystalline Silicon</td>
+                        <td>19%</td>
+                        <td>Glass with anti-reflective coating</td>
+                        <td>-0.35 %/°C</td>
+                    </tr>
+                    <tr>
+                        <td>Thin Film</td>
+                        <td>Thin film</td>
+                        <td>10%</td>
+                        <td>Glass</td>
+                        <td>-0.20 %/°C</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </Modal>
         <Modal title="Array Type" open={isModalOpen5} onOk={handleOk5} onCancel={handleCancel5}>
-
+            <div>
+                <p>The array type describes whether the PV modules in the array are fixed, or whether they move to track
+                    the movement of the sun across the sky with one or two axes of rotation. The default value is for a
+                    fixed array, or one with no tracking. Use the following diagrams to choose the appropriate option
+                    for your system:</p>
+                <figure>
+                    <img width="550" src="assets/img/pv_array_type.png" alt="Diagram of the three tracking options available in PVWatts®." />
+                    <figcaption>Fixed Open and Roof Mount Options</figcaption>
+                </figure>
+            </div>
         </Modal>
 
 

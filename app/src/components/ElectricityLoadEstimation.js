@@ -68,20 +68,6 @@ export const ElectricityLoadEstimation = () => {
         </Card>
 
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
-            <Title level={3} style={{textAlign: 'left'}}>Light Style</Title>
-
-            Need to confirm what are the required parameters.
-
-        </Card>
-
-        <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
-            <Title level={3} style={{textAlign: 'left'}}>Panel Replacement</Title>
-
-            Need to confirm what are the required parameters.
-
-        </Card>
-
-        <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
             <Title level={3} style={{textAlign: 'left'}}>Monthly Electricity Load in kWh</Title>
 
             <Paragraph>

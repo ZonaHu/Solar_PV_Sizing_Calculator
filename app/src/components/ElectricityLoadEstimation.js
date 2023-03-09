@@ -1,5 +1,6 @@
-import {Card, Input, InputNumber, Typography} from "antd";
+import {Card, InputNumber, Typography} from "antd";
 import {useState} from "react";
+import WeeklyCommutingTable from "./WeeklyCommutingTable";
 
 
 const {Title, Paragraph} = Typography;
@@ -58,6 +59,8 @@ export const ElectricityLoadEstimation = () => {
                 <b> When start recharging, what is the state of charge you usually re-charge to?</b>
                 <InputNumber addonAfter={"%"}  style={{width: '100px', marginLeft: '10px'}}/>
             </Paragraph>
+
+            <WeeklyCommutingTable/>
         </Card>
 
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>

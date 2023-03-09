@@ -1,4 +1,4 @@
-import {Card, Input, InputNumber, Typography} from "antd";
+import {Card, InputNumber, Typography} from "antd";
 import {useState} from "react";
 
 

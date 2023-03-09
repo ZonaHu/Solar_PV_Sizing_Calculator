@@ -1,9 +1,16 @@
 import {Card, Input, InputNumber, Typography} from "antd";
+import {useState} from "react";
 
 
 const {Title, Paragraph} = Typography;
 
 export const ElectricityLoadEstimation = () => {
+    const [lines, setLines] = useState(1)
+    const arr = Array(100)
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = {Cap: 0}
+    }
+    const [data, setData] = useState(arr)
 
     return <div>
         <Title level={4} style={{padding: '50px 50px 0px', textAlign: 'left'}}> Enter following information for your electricity
@@ -13,10 +20,12 @@ export const ElectricityLoadEstimation = () => {
 
             <Paragraph>
                 <b>Enter the number of electric vehicle you have: </b>
-                <InputNumber
-                    style={{width: '50px', marginLeft: '10px'}}
-                    min="0"
-                />
+                <InputNumber style={{width: '50px', marginLeft: '10px'}}
+                             value={lines}
+                             onChange={e => {
+                                 setLines(e)
+                             }}
+                             min={1}/>
             </Paragraph>
 
             <Paragraph>
@@ -27,43 +36,27 @@ export const ElectricityLoadEstimation = () => {
                 />
             </Paragraph>
 
-            {/*<Paragraph>*/}
-            {/*    <b> How large is the battery in kWh? </b>*/}
-            {/*    <InputNumber*/}
-            {/*        style={{width: '50px', marginLeft: '10px'}}*/}
-            {/*        min="0"*/}
-            {/*    />*/}
-            {/*</Paragraph>*/}
-            <Paragraph>
-                <b>How many days per week do you commute to work with EV? </b>
-                <InputNumber
-                    style={{width: '50px', marginLeft: '10px'}}
-                    min="0"
-                />
-            </Paragraph>
+            {
+                Array(Number(lines)).fill(0).map((item, index) => <div key={index} style={{marginBottom: '10px'}}>
+                    <b>Enter your battery capacity for vehicle #{index + 1} in kWh: </b>
+                    <InputNumber
+                        style={{width: '150px', marginLeft: '10px'}}
+                        addonAfter={"kWh"}
+                        min="0"
+                        step="10"
+                        value={data[index].Cap}
+                        onChange={e => {
+                            const oldData = [...data]
+                            oldData[index].Cap = e
+                            setData(oldData)
+                        }}
+                    />
+                </div>)
+            }
 
             <Paragraph>
-                <b> When does the EV usually leave the house</b>
-                <Input
-                    style={{width: '100px', marginLeft: '10px'}}
-                    min="0"
-                />
-            </Paragraph>
-
-            <Paragraph>
-                <b> When does the EV usually return the house</b>
-                <Input
-                    style={{width: '100px', marginLeft: '10px'}}
-                    min="0"
-                />
-            </Paragraph>
-
-            <Paragraph>
-                <b> What is the state of charge of the EV battery when you arrive?</b>
-                <Input
-                    style={{width: '100px', marginLeft: '10px'}}
-                    min="0"
-                />
+                <b> When start recharging, what is the state of charge you usually re-charge to?</b>
+                <InputNumber addonAfter={"%"}  style={{width: '100px', marginLeft: '10px'}}/>
             </Paragraph>
         </Card>
 

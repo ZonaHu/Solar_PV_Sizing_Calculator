@@ -2,7 +2,6 @@ import {Card, InputNumber, Typography} from "antd";
 import {useState} from "react";
 import WeeklyCommutingTable from "./WeeklyCommutingTable";
 
-
 const {Title, Paragraph} = Typography;
 
 export const ElectricityLoadEstimation = () => {
@@ -134,4 +133,3 @@ export const ElectricityLoadEstimation = () => {
             </Paragraph>
         </Card>
     </div>
-}

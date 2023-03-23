@@ -43,7 +43,7 @@ const columns = [
 
 const data = [];
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 1; i++) {
     data.push({
         key: i,
         monday: <SingleTripModal/>,

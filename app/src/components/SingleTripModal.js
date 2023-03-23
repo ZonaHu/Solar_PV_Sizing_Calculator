@@ -1,9 +1,13 @@
-import {Button, Modal, Typography, Dropdown, Space, message} from 'antd';
+import {Button, Modal, Typography, TimePicker, Dropdown, Space, message, Divider, InputNumber} from 'antd';
 
 import { useState } from 'react';
 import {DownOutlined, UserOutlined} from "@ant-design/icons";
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 const { Paragraph } = Typography;
+
 
 const SingleTripModal = () => {
 
@@ -64,7 +68,7 @@ const SingleTripModal = () => {
             <Paragraph>
                 <b> Select the vehicle you travelled with: </b>
                 <Dropdown menu={ menuProps }>
-                    <Button style={{width: '140px', marginLeft: '20px'}}>
+                    <Button style={{width: '140px', marginLeft: '10px'}}>
                         <Space>
                             Vehicle No.
                             <DownOutlined />
@@ -72,8 +76,23 @@ const SingleTripModal = () => {
                     </Button>
                 </Dropdown>
             </Paragraph>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+            <Paragraph>
+                <b> Leave at: </b>
+                <TimePicker  style={{width: '120px', marginLeft: '10px'}} defaultOpenValue={dayjs('00:00:00', 'HH:mm:ss')} />
+            </Paragraph>
+            <Paragraph>
+                <b> Return at: </b>
+                <TimePicker  style={{width: '120px', marginLeft: '10px'}} defaultOpenValue={dayjs('00:00:00', 'HH:mm:ss')} />
+            </Paragraph>
+            <Paragraph  style={{ marginTop: '50px'}}>
+                <b> Distance travelled: </b>
+                <InputNumber addonAfter={"km"} style={{width: '100px', marginLeft: '10px'}}/>
+            </Paragraph>
+            <Divider>OR</Divider>
+            <Paragraph>
+                <b> State of Charge on return: </b>
+                <InputNumber addonAfter={"%"} style={{width: '100px', marginLeft: '10px'}}/>
+            </Paragraph>
         </Modal>
       </>
     );

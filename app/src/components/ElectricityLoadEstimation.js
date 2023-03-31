@@ -5,6 +5,7 @@ import WeeklyCommutingTable from "./WeeklyCommutingTable";
 const {Title, Paragraph} = Typography;
 
 export const ElectricityLoadEstimation = () => {
+    const [numVehicles, setNumVehicles] = useState(1);
     const [lines, setLines] = useState(1)
     const arr = Array(100)
     for (let i = 0; i < arr.length; i++) {
@@ -21,12 +22,12 @@ export const ElectricityLoadEstimation = () => {
 
             <Paragraph>
                 <b>Enter the number of electric vehicle you have: </b>
-                <InputNumber style={{width: '50px', marginLeft: '10px'}}
-                             value={lines}
-                             onChange={e => {
-                                 setLines(e)
-                             }}
-                             min={1}/>
+                <InputNumber
+                    style={{width: '50px', marginLeft: '10px'}}
+                    value={numVehicles}
+                    onChange={setNumVehicles}
+                    min={1}
+                />
             </Paragraph>
 
             <Paragraph>
@@ -60,7 +61,7 @@ export const ElectricityLoadEstimation = () => {
                 <InputNumber addonAfter={"%"} style={{width: '100px', marginLeft: '10px'}}/>
             </Paragraph>
 
-            <WeeklyCommutingTable/>
+            <WeeklyCommutingTable numVehicles={numVehicles}/>
         </Card>
 
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>

@@ -1,4 +1,4 @@
-import {Button, Table, Typography} from 'antd';
+import {Table, Typography} from 'antd';
 import SingleTripModal from "./SingleTripModal";
 
 const {Title, Paragraph} = Typography;
@@ -49,11 +49,11 @@ const WeeklyCommutingTable = ({numVehicles}) => {
             key: i,
             monday: <SingleTripModal lines={numVehicles}/>,
             tuesday: <SingleTripModal lines={numVehicles}/>,
-            wednesday: <Button type="primary"> + Add a New Trip</Button>,
-            thursday: <Button type="primary"> + Add a New Trip</Button>,
-            friday: <Button type="primary"> + Add a New Trip</Button>,
-            saturday: <Button type="primary"> + Add a New Trip</Button>,
-            sunday: <Button type="primary"> + Add a New Trip</Button>,
+            wednesday:  <SingleTripModal lines={numVehicles}/>,
+            thursday:  <SingleTripModal lines={numVehicles}/>,
+            friday:  <SingleTripModal lines={numVehicles}/>,
+            saturday:  <SingleTripModal lines={numVehicles}/>,
+            sunday:  <SingleTripModal lines={numVehicles}/>,
         });
     }
 

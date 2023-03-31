@@ -172,7 +172,7 @@ export const EstimationParameters = () => {
             </div>
             <div style={{display: 'flex', alignItems: 'center', marginTop: '20px'}}>
                 <span style={{marginRight: '20px'}}>Battery Capacity:</span>
-                <InputNumber style={{width: '100px'}} min={1} defaultValue={40}/>
+                <InputNumber style={{width: '100px'}} min={1} defaultValue={20}/>
             </div>
         </Card>
 

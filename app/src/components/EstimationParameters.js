@@ -94,9 +94,9 @@ export const EstimationParameters = () => {
             <div style={{marginTop: '20px', marginBottom: '20px', textAlign: 'center'}}>
                 <Paragraph>
                     <b>Typical prices for battery storage in the US (source from
-                        <a href="https://news.energysage.com/tesla-powerwall-vs-sonnen-eco-vs-lg-chem/">EnergySage</a>
+                        <a href="https://news.energysage.com/tesla-powerwall-vs-sonnen-eco-vs-lg-chem/"> EnergySage </a>
                         and
-                        <a href="https://www.solaris-shop.com/lg-chem-resu10h-9-8kwh-primary-lithium-ion-battery/">Solaris</a>)
+                        <a href="https://www.solaris-shop.com/lg-chem-resu10h-9-8kwh-primary-lithium-ion-battery/"> Solaris</a>)
                     </b>
                 </Paragraph>
             </div>

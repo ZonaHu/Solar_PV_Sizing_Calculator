@@ -179,7 +179,7 @@ export const EstimationParameters = () => {
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
             <Title level={3} style={{textAlign: 'left'}}>Advanced Parameters</Title>
             <Paragraph>
-                <b>Confidence Level and Days in Sample:</b>
+                <b>Confidence Level and Days in Sample: </b>
                 Our algorithm provides a conservative estimate. It guarantees a level of confidence (between 0.5 to 1)
                 such that in any windows of "Days in Sample" days that certain levels of either Portion of Electricity
                 Met or Loss of Load Probability is met.

@@ -1,0 +1,23 @@
+{
+  "MyLocation": {
+    "city": "string",
+    "latitude": "number",
+    "longitude": "number"
+  },
+  "SolarPanelParameters": {
+    "systemLosses": "number"
+  },
+  "SolarPanelPosition": {
+    "numberOfRoofSegments": "number",
+    "roofSegments": [
+      {
+        "tilt": "number",
+        "azimuth": "number"
+      }
+    ]
+  },
+  "SolarPanelType": {
+    "moduleType": "string",
+    "arrayType": "string"
+  }
+}

@@ -1,10 +1,13 @@
-import {Button, Card, Dropdown, message, Modal, Space, Typography} from 'antd';
+import {Button, Card, Dropdown, Menu, message, Modal, Space, Typography} from 'antd';
 import {DownOutlined, InfoCircleTwoTone} from "@ant-design/icons";
 import {useState} from "react";
 
 const {Title, Paragraph} = Typography;
 
 const SolarPanelType = () => {
+
+    const [moduleType, setModuleType] = useState('');
+    const [arrayType, setArrayType] = useState('');
 
     const showModal5 = () => {
         setIsModalOpen5(true);
@@ -77,23 +80,30 @@ const SolarPanelType = () => {
     const handleMMenuClick = (e) => {
         message.info('Click on M menu item.');
         console.log('click', e);
+        setModuleType(e.key);
     };
 
     const handleAMenuClick = (e) => {
         message.info('Click on A menu item.');
         console.log('click', e);
+        setArrayType(e.key);
     };
 
-    const modTypeMenuProps = {
-        items: itemsMod,
-        onClick: handleMMenuClick,
-    };
+    const modTypeMenu = (
+        <Menu onClick={handleMMenuClick}>
+            {itemsMod.map(item => (
+                <Menu.Item key={item.key}>{item.label}</Menu.Item>
+            ))}
+        </Menu>
+    );
 
-
-    const arrayTypeMenuProps = {
-        items: arrayTypeItems,
-        onClick: handleAMenuClick,
-    };
+    const arrayTypeMenu = (
+        <Menu onClick={handleAMenuClick}>
+            {arrayTypeItems.map(item => (
+                <Menu.Item key={item.key}>{item.label}</Menu.Item>
+            ))}
+        </Menu>
+    );
 
     return <div>
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
@@ -171,10 +181,10 @@ const SolarPanelType = () => {
 
             <Paragraph>
                 <b>Module Type *</b>
-                <Dropdown menu={modTypeMenuProps}>
+                <Dropdown menu={modTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
-                            Button
+                            {moduleType || 'Select Module Type'}
                             <DownOutlined/>
                         </Space>
                     </Button>
@@ -183,10 +193,10 @@ const SolarPanelType = () => {
 
             <Paragraph>
                 <b>Array Type *</b>
-                <Dropdown menu={arrayTypeMenuProps}>
+                <Dropdown menu={arrayTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
-                            Button
+                            {arrayType || 'Select Array Type'}
                             <DownOutlined/>
                         </Space>
                     </Button>

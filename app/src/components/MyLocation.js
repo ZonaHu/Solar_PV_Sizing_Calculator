@@ -7,6 +7,10 @@ export const MyLocation = () => {
 
     const [status1, setStatus1] = useState('error')
     const [status2, setStatus2] = useState('error')
+    const [city, setCity] = useState("");
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
+
     return <div>
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
             <Title level={3}>Welcome!</Title>
@@ -62,7 +66,11 @@ export const MyLocation = () => {
             <Paragraph>
                 <b>Enter your city:</b>
                 <Input style={{width: '200px', borderBottom: '1px solid #000', marginLeft: '10px', borderRadius: 0}}
-                       placeholder="your city" bordered={false}/>
+                       placeholder="your city"
+                       bordered={false}
+                       value={city}
+                       onChange={(e) => setCity(e.target.value)}
+                />
             </Paragraph>
             <Divider>OR</Divider>
 
@@ -78,10 +86,11 @@ export const MyLocation = () => {
                     onChange={(value) => {
                         if (value && value !== 0) {
                             setStatus1('')
+                            setLatitude(value);
                         } else {
                             setStatus1('error')
+                            setLatitude(null);
                         }
-
                     }}
                     stringMode
                 />
@@ -96,8 +105,10 @@ export const MyLocation = () => {
                     onChange={(value) => {
                         if (value && value !== 0) {
                             setStatus2('')
+                            setLongitude(value);
                         } else {
                             setStatus2('error')
+                            setLongitude(null);
                         }
                     }}
                 />

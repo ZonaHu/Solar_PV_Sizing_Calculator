@@ -41,51 +41,47 @@ const SolarPanelType = () => {
     const arrayTypeItems = [
         {
             label: 'Fixed - Open Rack',
-            key: '1',
+            key: 'Fixed - Open Rack',
         },
         {
             label: 'Fixed - Roof Mounted',
-            key: '2',
+            key: 'Fixed - Roof Mounted',
         },
         {
             label: '1 - Axis',
-            key: '3',
+            key: '1 - Axis',
         },
         {
             label: '1 - Axis Backtracking',
-            key: '4',
+            key: '1 - Axis Backtracking',
         },
         {
             label: '2 - Axis',
-            key: '5',
+            key: '2 - Axis',
         },
     ];
 
     const itemsMod = [
         {
             label: 'Standard',
-            key: '1',
+            key: 'Standard',
         },
         {
             label: 'Premium',
-            key: '2',
+            key: 'Premium',
         },
         {
             label: 'Thin film',
-            key: '3',
+            key: 'Thin film',
         },
     ];
 
 
     const handleMMenuClick = (e) => {
-        message.info('Click on M menu item.');
-        console.log('click', e);
         setModuleType(e.key);
     };
 
     const handleAMenuClick = (e) => {
-        message.info('Click on A menu item.');
-        console.log('click', e);
         setArrayType(e.key);
     };
 
@@ -181,7 +177,7 @@ const SolarPanelType = () => {
 
             <Paragraph>
                 <b>Module Type *</b>
-                <Dropdown menu={modTypeMenu}>
+                <Dropdown overlay={modTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
                             {moduleType || 'Select Module Type'}
@@ -193,7 +189,7 @@ const SolarPanelType = () => {
 
             <Paragraph>
                 <b>Array Type *</b>
-                <Dropdown menu={arrayTypeMenu}>
+                <Dropdown overlay={arrayTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
                             {arrayType || 'Select Array Type'}

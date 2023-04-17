@@ -98,7 +98,7 @@ export const MyLocation = () => {
                     style={{width: '100px', marginLeft: '10px'}}
                     placeholder="longitude"
                     status={status2}
-                    min="0"
+                    min="-180"
                     max="180"
                     step="0.01"
                     stringMode

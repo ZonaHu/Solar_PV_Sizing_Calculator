@@ -68,6 +68,8 @@ export const ElectricityLoadEstimation = () => {
                              style={{width: '100px', marginLeft: '10px'}}
                              value={stateOfCharge}
                              onChange={setStateOfCharge}
+                             min="0"
+                             max="100"
                 />
             </Paragraph>
 

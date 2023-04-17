@@ -1,4 +1,4 @@
-import {Button, Card, Dropdown, Menu, message, Modal, Space, Typography} from 'antd';
+import {Button, Card, Dropdown, Menu, Modal, Space, Typography} from 'antd';
 import {DownOutlined, InfoCircleTwoTone} from "@ant-design/icons";
 import {useState} from "react";
 
@@ -37,6 +37,21 @@ const SolarPanelType = () => {
         setIsModalOpen5(false);
     };
 
+    const itemsMod = [
+        {
+            label: 'Standard',
+            key: 'Standard',
+        },
+        {
+            label: 'Premium',
+            key: 'Premium',
+        },
+        {
+            label: 'Thin film',
+            key: 'Thin film',
+        },
+    ];
+
 
     const arrayTypeItems = [
         {
@@ -60,22 +75,6 @@ const SolarPanelType = () => {
             key: '2 - Axis',
         },
     ];
-
-    const itemsMod = [
-        {
-            label: 'Standard',
-            key: 'Standard',
-        },
-        {
-            label: 'Premium',
-            key: 'Premium',
-        },
-        {
-            label: 'Thin film',
-            key: 'Thin film',
-        },
-    ];
-
 
     const handleMMenuClick = (e) => {
         setModuleType(e.key);

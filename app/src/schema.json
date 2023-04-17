@@ -29,12 +29,7 @@
         "capacity": "number"
       }
     ],
-    "stateOfCharge": [
-      {
-        "vehicle": "number",
-        "charge": "number"
-      }
-    ],
+    "stateOfCharge": "number",
     "monthlyElectricityLoad": [
       {
         "month": "string",
@@ -106,5 +101,15 @@
         }
       ]
     }
-  }
+  },
+  "costs": {
+    "solarPanelPrice": "number",
+    "batteryPrice": "number"
+  },
+  "capacities": {
+    "solarPanelCapacity": "number",
+    "batteryCapacity": "number"
+  },
+  "confidenceLevel": "number",
+  "daysInSample": "number"
 }

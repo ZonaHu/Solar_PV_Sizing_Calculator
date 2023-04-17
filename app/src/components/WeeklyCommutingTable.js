@@ -1,9 +1,57 @@
 import {Table, Typography} from 'antd';
 import SingleTripModal from "./SingleTripModal";
+import { useState } from "react";
 
 const {Title, Paragraph} = Typography;
 
 const WeeklyCommutingTable = ({numVehicles}) => {
+    const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+
+    const [trips, setTrips] = useState([
+        {
+            key: "row-0",
+            monday: null,
+            tuesday: null,
+            wednesday: null,
+            thursday: null,
+            friday: null,
+            saturday: null,
+            sunday: null,
+        },
+    ]);
+
+    const [tripCounter, setTripCounter] = useState(1);
+
+    const handleAddTrip = (newTrip, dayOfWeek) => {
+        if (newTrip) {
+            setTrips((prevTrips) => {
+                const updatedTrips = [...prevTrips];
+                let rowIndex = updatedTrips.findIndex((row) => row[dayOfWeek] === null);
+
+                if (rowIndex === -1) {
+                    rowIndex = updatedTrips.length;
+                    const newRow = {
+                        key: `row-${rowIndex}`,
+                        monday: null,
+                        tuesday: null,
+                        wednesday: null,
+                        thursday: null,
+                        friday: null,
+                        saturday: null,
+                        sunday: null,
+                    };
+                    updatedTrips.push(newRow);
+                }
+
+                updatedTrips[rowIndex][dayOfWeek] = newTrip;
+
+                return updatedTrips;
+            });
+        }
+
+        setTripCounter(tripCounter + 1);
+    };
+
     const columns = [
         {
             title: 'Monday',
@@ -42,20 +90,77 @@ const WeeklyCommutingTable = ({numVehicles}) => {
         },
     ];
 
-    const data = [];
+    const data = [
+        {
+            key: "addNew",
+            monday: (
+                <SingleTripModal
+                    tripId={`trip-${tripCounter}`}
+                    lines={numVehicles}
+                    onAddTrip={(newTrip) => handleAddTrip(newTrip, "monday")}
+                />
+            ),
+            tuesday: (
+                <SingleTripModal
+                    tripId={`trip-${tripCounter}`}
+                    lines={numVehicles}
+                    onAddTrip={(newTrip) => handleAddTrip(newTrip, "tuesday")}
+                />
+            ),
+            wednesday: (
+                <SingleTripModal
+                    tripId={`trip-${tripCounter}`}
+                    lines={numVehicles}
+                    onAddTrip={(newTrip) => handleAddTrip(newTrip, "wednesday")}
+                />
+            ),
+            thursday: (
+                <SingleTripModal
+                    tripId={`trip-${tripCounter}`}
+                    lines={numVehicles}
+                    onAddTrip={(newTrip) => handleAddTrip(newTrip, "thursday")}
+                />
+            ),
+            friday: (
+                <SingleTripModal
+                    tripId={`trip-${tripCounter}`}
+                    lines={numVehicles}
+                    onAddTrip={(newTrip) => handleAddTrip(newTrip, "friday")}
+                />
+            ),
+            saturday: (
+                <SingleTripModal
+                    tripId={`trip-${tripCounter}`}
+                    lines={numVehicles}
+                    onAddTrip={(newTrip) => handleAddTrip(newTrip, "saturday")}
+                />
+            ),
+            sunday: (
+                <SingleTripModal
+                    tripId={`trip-${tripCounter}`}
+                    lines={numVehicles}
+                    onAddTrip={(newTrip) => handleAddTrip(newTrip, "sunday")}
+                />
+            ),
+        },
+    ];
 
-    for (let i = 0; i < 1; i++) {
-        data.push({
-            key: i,
-            monday: <SingleTripModal lines={numVehicles}/>,
-            tuesday: <SingleTripModal lines={numVehicles}/>,
-            wednesday:  <SingleTripModal lines={numVehicles}/>,
-            thursday:  <SingleTripModal lines={numVehicles}/>,
-            friday:  <SingleTripModal lines={numVehicles}/>,
-            saturday:  <SingleTripModal lines={numVehicles}/>,
-            sunday:  <SingleTripModal lines={numVehicles}/>,
+    trips.forEach((row) => {
+        const newRow = { key: row.key };
+
+        daysOfWeek.forEach((day) => {
+            if (row[day]) {
+                const trip = row[day];
+                newRow[day] = (
+                    <>
+                        Leave at: {trip.leaveAt.format("HH:mm")} Return at: {trip.returnAt.format("HH:mm")}
+                    </>
+                );
+            }
         });
-    }
+
+        data.push(newRow);
+    });
 
     return <div>
         <Title level={5} style={{padding: '50px 50px 0px', textAlign: 'center'}}> Weekly Commuting Table </Title>

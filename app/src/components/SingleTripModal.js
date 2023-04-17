@@ -8,7 +8,7 @@ dayjs.extend(customParseFormat);
 
 const {Paragraph} = Typography;
 
-const SingleTripModal = ({lines}) => {
+const SingleTripModal = ({lines, tripId, dayOfWeek, onAddTrip}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [vehicleNo, setVehicleNo] = useState('');
     const [leaveAt, setLeaveAt] = useState('');
@@ -21,8 +21,22 @@ const SingleTripModal = ({lines}) => {
     };
 
     const handleOk = () => {
+        // Save the new trip data (including tripId) to the parent component using the onAddTrip prop
+        onAddTrip(
+            {
+                tripId: tripId,
+                vehicleNo,
+                leaveAt: dayjs(leaveAt),
+                returnAt: dayjs(returnAt),
+                distance,
+                stateOfCharge,
+            },
+            dayOfWeek
+        );
+
         setIsModalOpen(false);
     };
+
 
     const handleCancel = () => {
         setIsModalOpen(false);
@@ -85,6 +99,7 @@ const SingleTripModal = ({lines}) => {
                         style={{width: '100px', marginLeft: '10px'}}
                         value={distance}
                         onChange={(value) => setDistance(value)}
+                        min={0}
                     />
                 </Paragraph>
                 <Divider>OR</Divider>
@@ -95,6 +110,7 @@ const SingleTripModal = ({lines}) => {
                         style={{width: '100px', marginLeft: '10px'}}
                         value={stateOfCharge}
                         onChange={(value) => setStateOfCharge(value)}
+                        min={0}
                     />
                 </Paragraph>
             </Modal>

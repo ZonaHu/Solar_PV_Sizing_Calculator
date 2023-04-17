@@ -19,5 +19,92 @@
   "SolarPanelType": {
     "moduleType": "string",
     "arrayType": "string"
+  },
+  "ElectricityLoadEstimation": {
+    "numVehicles": "number",
+    "bidirectionalVehicles": "number",
+    "batteryCapacity": [
+      {
+        "vehicle": "number",
+        "capacity": "number"
+      }
+    ],
+    "stateOfCharge": [
+      {
+        "vehicle": "number",
+        "charge": "number"
+      }
+    ],
+    "monthlyElectricityLoad": [
+      {
+        "month": "string",
+        "load": "number"
+      }
+    ],
+    "weeklyCommutingTable": {
+      "monday": [
+        {
+          "vehicleNo": "number",
+          "leaveAt": "string",
+          "returnAt": "string",
+          "distance": "number",
+          "stateOfCharge": "number"
+        }
+      ],
+      "tuesday": [
+        {
+          "vehicleNo": "number",
+          "leaveAt": "string",
+          "returnAt": "string",
+          "distance": "number",
+          "stateOfCharge": "number"
+        }
+      ],
+      "wednesday": [
+        {
+          "vehicleNo": "number",
+          "leaveAt": "string",
+          "returnAt": "string",
+          "distance": "number",
+          "stateOfCharge": "number"
+        }
+      ],
+      "thursday": [
+        {
+          "vehicleNo": "number",
+          "leaveAt": "string",
+          "returnAt": "string",
+          "distance": "number",
+          "stateOfCharge": "number"
+        }
+      ],
+      "friday": [
+        {
+          "vehicleNo": "number",
+          "leaveAt": "string",
+          "returnAt": "string",
+          "distance": "number",
+          "stateOfCharge": "number"
+        }
+      ],
+      "saturday": [
+        {
+          "vehicleNo": "number",
+          "leaveAt": "string",
+          "returnAt": "string",
+          "distance": "number",
+          "stateOfCharge": "number"
+        }
+      ],
+      "sunday": [
+        {
+          "vehicleNo": "number",
+          "leaveAt": "string",
+          "returnAt": "string",
+          "distance": "number",
+          "stateOfCharge": "number"
+        }
+      ]
+    }
   }
 }

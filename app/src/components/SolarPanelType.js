@@ -1,10 +1,13 @@
-import {Button, Card, Dropdown, message, Modal, Space, Typography} from 'antd';
+import {Button, Card, Dropdown, Menu, Modal, Space, Typography} from 'antd';
 import {DownOutlined, InfoCircleTwoTone} from "@ant-design/icons";
 import {useState} from "react";
 
 const {Title, Paragraph} = Typography;
 
 const SolarPanelType = () => {
+
+    const [moduleType, setModuleType] = useState('');
+    const [arrayType, setArrayType] = useState('');
 
     const showModal5 = () => {
         setIsModalOpen5(true);
@@ -34,66 +37,68 @@ const SolarPanelType = () => {
         setIsModalOpen5(false);
     };
 
+    const itemsMod = [
+        {
+            label: 'Standard',
+            key: 'Standard',
+        },
+        {
+            label: 'Premium',
+            key: 'Premium',
+        },
+        {
+            label: 'Thin film',
+            key: 'Thin film',
+        },
+    ];
+
 
     const arrayTypeItems = [
         {
             label: 'Fixed - Open Rack',
-            key: '1',
+            key: 'Fixed - Open Rack',
         },
         {
             label: 'Fixed - Roof Mounted',
-            key: '2',
+            key: 'Fixed - Roof Mounted',
         },
         {
             label: '1 - Axis',
-            key: '3',
+            key: '1 - Axis',
         },
         {
             label: '1 - Axis Backtracking',
-            key: '4',
+            key: '1 - Axis Backtracking',
         },
         {
             label: '2 - Axis',
-            key: '5',
+            key: '2 - Axis',
         },
     ];
-
-    const itemsMod = [
-        {
-            label: 'Standard',
-            key: '1',
-        },
-        {
-            label: 'Premium',
-            key: '2',
-        },
-        {
-            label: 'Thin film',
-            key: '3',
-        },
-    ];
-
 
     const handleMMenuClick = (e) => {
-        message.info('Click on M menu item.');
-        console.log('click', e);
+        setModuleType(e.key);
     };
 
     const handleAMenuClick = (e) => {
-        message.info('Click on A menu item.');
-        console.log('click', e);
+        setArrayType(e.key);
     };
 
-    const modTypeMenuProps = {
-        items: itemsMod,
-        onClick: handleMMenuClick,
-    };
+    const modTypeMenu = (
+        <Menu onClick={handleMMenuClick}>
+            {itemsMod.map(item => (
+                <Menu.Item key={item.key}>{item.label}</Menu.Item>
+            ))}
+        </Menu>
+    );
 
-
-    const arrayTypeMenuProps = {
-        items: arrayTypeItems,
-        onClick: handleAMenuClick,
-    };
+    const arrayTypeMenu = (
+        <Menu onClick={handleAMenuClick}>
+            {arrayTypeItems.map(item => (
+                <Menu.Item key={item.key}>{item.label}</Menu.Item>
+            ))}
+        </Menu>
+    );
 
     return <div>
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
@@ -171,10 +176,10 @@ const SolarPanelType = () => {
 
             <Paragraph>
                 <b>Module Type *</b>
-                <Dropdown menu={modTypeMenuProps}>
+                <Dropdown overlay={modTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
-                            Button
+                            {moduleType || 'Select Module Type'}
                             <DownOutlined/>
                         </Space>
                     </Button>
@@ -183,10 +188,10 @@ const SolarPanelType = () => {
 
             <Paragraph>
                 <b>Array Type *</b>
-                <Dropdown menu={arrayTypeMenuProps}>
+                <Dropdown overlay={arrayTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
-                            Button
+                            {arrayType || 'Select Array Type'}
                             <DownOutlined/>
                         </Space>
                     </Button>

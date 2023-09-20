@@ -12,7 +12,7 @@ export const Results = () => {
         { Epsilon: '0.45', Cost: 5 },
         { Epsilon: '0.37', Cost: 4.9 },
         { Epsilon: '0.23', Cost: 6 },
-        { Epsilon: '0.23', Cost: 7 },
+        { Epsilon: '0.24', Cost: 7 },
         { Epsilon: '0.39', Cost: 9 },
         { Epsilon: '0.67', Cost: 13 },
     ];

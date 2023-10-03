@@ -6,15 +6,15 @@ const {Title, Paragraph} = Typography;
 export const Results = () => {
     // those are currently placeholder data, will be computed from the backend.
     const data = [
-        { Epsilon: '0.1', Cost: 3 },
-        { Epsilon: '0.12', Cost: 4 },
-        { Epsilon: '0.29', Cost: 3.5 },
-        { Epsilon: '0.45', Cost: 5 },
-        { Epsilon: '0.37', Cost: 4.9 },
-        { Epsilon: '0.23', Cost: 6 },
-        { Epsilon: '0.24', Cost: 7 },
-        { Epsilon: '0.39', Cost: 9 },
-        { Epsilon: '0.67', Cost: 13 },
+        { Epsilon: `0.1`, Cost: 3, PV1: 12, PV2: 20, Storage: 300  },
+        { Epsilon: '0.12', Cost: 4, PV1: 20, PV2: 20, Storage: 300  },
+        { Epsilon: '0.29', Cost: 3.5, PV1: 20, PV2: 20, Storage: 300    },
+        { Epsilon: '0.45', Cost: 5, PV1: 20, PV2: 20, Storage: 300    },
+        { Epsilon: '0.37', Cost: 4.9, PV1: 20, PV2: 20, Storage: 300    },
+        { Epsilon: '0.23', Cost: 6, PV1: 20, PV2: 20, Storage: 300    },
+        { Epsilon: '0.24', Cost: 7, PV1: 20, PV2: 20, Storage: 300    },
+        { Epsilon: '0.39', Cost: 9, PV1: 20, PV2: 20, Storage: 300    },
+        { Epsilon: '0.67', Cost: 13, PV1: 20, PV2: 20, Storage: 300    },
     ];
 
     const config = {
@@ -47,6 +47,9 @@ export const Results = () => {
                 fill: '#aaa',
             },
         },
+        tooltip: {
+            fields: ['Cost','PV1','PV2','Storage'],
+        }
     };
 
     let chart;

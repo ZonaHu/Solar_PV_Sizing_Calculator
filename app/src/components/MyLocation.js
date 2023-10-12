@@ -4,7 +4,7 @@ import {UploadOutlined} from "@ant-design/icons";
 
 const {Title, Paragraph} = Typography;
 
-// TODO: need to be updated
+// TODO: need to save the file onto the server
 const props = {
     name: 'file',
     action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
@@ -32,6 +32,7 @@ export const MyLocation = () => {
     const [longitude, setLongitude] = useState(null);
 
     const handleDownloadClick = () => {
+        // TODO: Replace the path with the path of the file on the server
         fetch('/app/src/components/assets/new_dheli_pv_Kopie.txt')
             .then((response) => {
                 const filename = 'sample.txt';
@@ -45,6 +46,28 @@ export const MyLocation = () => {
                     window.URL.revokeObjectURL(url);
                 });
             });
+    };
+
+
+    const getLocation = () => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const accuracy = position.coords.accuracy;
+                    const locationResult = `Latitude: ${latitude}, Longitude: ${longitude}, Accuracy: ${accuracy} meters`;
+
+                    // TODO: save this location Result as the location data
+                    console.log(locationResult);
+                },
+                (error) => {
+                    console.error("Error getting location:", error.message);
+                }
+            );
+        } else {
+            console.error("Geolocation is not available in this browser.");
+        }
     };
 
     return <div>
@@ -94,7 +117,7 @@ export const MyLocation = () => {
 
             <Paragraph>
                 <b>Autofill location using your IP address:</b>
-                <Button style={{marginLeft: '10px'}}>Detect Location</Button>
+                <Button style={{marginLeft: '10px'}} onClick={getLocation}>Detect Location</Button>
             </Paragraph>
 
             <Divider>OR</Divider>

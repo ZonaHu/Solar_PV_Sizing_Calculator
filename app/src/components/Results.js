@@ -1,3 +1,4 @@
+import React from 'react';
 import {Card, Typography} from "antd";
 import { Line } from '@ant-design/charts';
 
@@ -52,6 +53,7 @@ export const Results = () => {
         }
     };
 
+    // eslint-disable-next-line no-unused-vars
     let chart;
 
     return <div>

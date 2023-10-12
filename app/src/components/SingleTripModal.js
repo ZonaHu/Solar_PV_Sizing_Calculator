@@ -1,3 +1,4 @@
+import React from 'react';
 import {Button, Divider, Dropdown, InputNumber, message, Modal, Space, TimePicker, Typography} from 'antd';
 import {DownOutlined, UserOutlined} from '@ant-design/icons';
 import dayjs from 'dayjs';
@@ -8,6 +9,7 @@ dayjs.extend(customParseFormat);
 
 const {Paragraph} = Typography;
 
+// eslint-disable-next-line react/prop-types
 const SingleTripModal = ({lines, tripId, dayOfWeek, onAddTrip}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [vehicleNo, setVehicleNo] = useState('');

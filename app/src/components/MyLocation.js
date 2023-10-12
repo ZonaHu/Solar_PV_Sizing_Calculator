@@ -1,3 +1,4 @@
+import React from 'react';
 import {Button, Card, Divider, Input, InputNumber, Typography,Upload, message} from 'antd';
 import {useState} from 'react';
 import {UploadOutlined} from "@ant-design/icons";
@@ -28,7 +29,9 @@ export const MyLocation = () => {
     const [status1, setStatus1] = useState('error')
     const [status2, setStatus2] = useState('error')
     const [city, setCity] = useState("");
+    // eslint-disable-next-line no-unused-vars
     const [latitude, setLatitude] = useState(null);
+    // eslint-disable-next-line no-unused-vars
     const [longitude, setLongitude] = useState(null);
 
     const handleDownloadClick = () => {

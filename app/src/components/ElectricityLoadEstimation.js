@@ -1,3 +1,4 @@
+import React from 'react';
 import {Card, InputNumber, Typography} from "antd";
 import {useState} from "react";
 import WeeklyCommutingTable from "./WeeklyCommutingTable";
@@ -6,6 +7,7 @@ const {Title, Paragraph} = Typography;
 
 export const ElectricityLoadEstimation = () => {
     const [numVehicles, setNumVehicles] = useState(1);
+    // eslint-disable-next-line no-unused-vars
     const [lines, setLines] = useState(1)
     const arr = Array(100)
     for (let i = 0; i < arr.length; i++) {

@@ -1,9 +1,10 @@
+import React, {useState} from 'react';
 import {Table, Typography} from 'antd';
 import SingleTripModal from "./SingleTripModal";
-import { useState } from "react";
 
 const {Title, Paragraph} = Typography;
 
+// eslint-disable-next-line react/prop-types
 const WeeklyCommutingTable = ({numVehicles}) => {
     const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
@@ -146,7 +147,7 @@ const WeeklyCommutingTable = ({numVehicles}) => {
     ];
 
     trips.forEach((row) => {
-        const newRow = { key: row.key };
+        const newRow = {key: row.key};
 
         daysOfWeek.forEach((day) => {
             if (row[day]) {
@@ -165,7 +166,7 @@ const WeeklyCommutingTable = ({numVehicles}) => {
     return <div>
         <Title level={5} style={{padding: '50px 50px 0px', textAlign: 'center'}}> Weekly Commuting Table </Title>
         <Paragraph>
-            <b>* Please click on the "Add a New Trip" button to input the leave time and return time for each trip that
+            <b>* Please click on the &quot;Add a New Trip&quot; button to input the leave time and return time for each trip that
                 you made with your electric vehicles. </b>
         </Paragraph>
         <Table

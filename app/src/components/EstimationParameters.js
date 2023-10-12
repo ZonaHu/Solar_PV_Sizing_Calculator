@@ -1,3 +1,4 @@
+import React from 'react';
 import {Card, InputNumber, Slider, Typography} from "antd";
 import {useState} from "react";
 
@@ -7,11 +8,9 @@ const {Title, Paragraph} = Typography;
 
 export const EstimationParameters = () => {
     const [spPrice, setSpPrice] = useState(2590);
-
     const handleSolarPanelPriceChange = (value) => {
         setSpPrice(value);
     };
-
     const [batteryPrice, setBatteryPrice] = useState(0);
 
     const handleBatteryPriceChange = (value) => {
@@ -181,7 +180,7 @@ export const EstimationParameters = () => {
             <Paragraph>
                 <b>Confidence Level and Days in Sample: </b>
                 Our algorithm provides a conservative estimate. It guarantees a level of confidence (between 0.5 to 1)
-                such that in any windows of "Days in Sample" days that certain levels of either Portion of Electricity
+                such that in any windows of &quot;Days in Sample&quot; days that certain levels of either Portion of Electricity
                 Met or Loss of Load Probability is met.
             </Paragraph>
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import {Card, InputNumber, Modal, Typography} from 'antd';
 import {InfoCircleTwoTone} from "@ant-design/icons";
 import {useEffect, useState} from "react";
@@ -50,12 +51,12 @@ const SolarPanelPosition = () => {
                     tracking axis. The tilt angle does not apply to arrays with two-axis tracking.</p>
                 <p>The PVWatts<sup></sup> default value for the tilt angle depends on the array type: For a fixed array,
                     the default value is 20 degrees, and for one-axis tracking the default value is zero. A common rule
-                    of thumb for fixed arrays is to set the tilt angle to the latitude of the system's location to
-                    maximize the system's total electrical output over the year. Use a lower tilt angle favor peak
+                    of thumb for fixed arrays is to set the tilt angle to the latitude of the system&apos;s location to
+                    maximize the system&apos;s total electrical output over the year. Use a lower tilt angle favor peak
                     production in the summer months when the sun is high in the sky, or a higher tilt angle to increase
                     output during winter months. Higher tilt angles tend to cost more for racking and mounting hardware,
                     and may increase the risk of wind damage to the array.</p>
-                <p>For an array installed on a building's roof, you may want to choose a tilt angle equal to the roof
+                <p>For an array installed on a building&apos;s roof, you may want to choose a tilt angle equal to the roof
                     pitch. Use the table below to convert roof pitch in ratio of rise (vertical) over run (horizontal)
                     to tilt angle.</p>
                 <table style={{textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', fontSize: '14px'}}>
@@ -192,7 +193,7 @@ const SolarPanelPosition = () => {
             </Paragraph>
             {
                 Array(Number(lines)).fill(0).map((item, index) => <div key={index} style={{marginBottom: '10px'}}>
-                    <b>Enter your {index + 1}'s roof segment's Tilt and Azimuth: </b>
+                    <b>Enter your {index + 1}&apos;s roof segment&apos;s Tilt and Azimuth: </b>
                     <InputNumber
                         style={{width: '150px', marginLeft: '10px'}}
                         placeholder="Tilt in degrees"

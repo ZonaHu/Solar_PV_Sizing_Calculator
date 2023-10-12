@@ -45,7 +45,9 @@ const App = () => {
         setCurrent(current - 1);
     };
 
+    // eslint-disable-next-line no-unused-vars
     const [status1, setStatus1] = useState('error')
+    // eslint-disable-next-line no-unused-vars
     const [status2, setStatus2] = useState('error')
 
     const items = steps.map((item) => ({key: item.title, title: item.title}));

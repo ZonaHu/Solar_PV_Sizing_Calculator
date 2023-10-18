@@ -1,6 +1,8 @@
 import React from 'react';
-import {Card, Typography} from "antd";
+import {Button, Card, Typography} from "antd";
 import { Line } from '@ant-design/charts';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const {Title, Paragraph} = Typography;
 
@@ -56,7 +58,20 @@ export const Results = () => {
     // eslint-disable-next-line no-unused-vars
     let chart;
 
-    return <div>
+    const exportToPDF = async () => {
+        const input = document.getElementById("resultsSection");
+        const canvas = await html2canvas(input);
+        const imgData = canvas.toDataURL('image/png');
+
+        const pdf = new jsPDF('l', 'mm', 'a4');
+        const width = pdf.internal.pageSize.getWidth();
+        const height = pdf.internal.pageSize.getHeight();
+
+        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+        pdf.save("results.pdf");
+    };
+
+    return   <div id="resultsSection">
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
             <Title level={3}>Sizing to meet <b>  ε * 100% </b> of your electricity load through solar energy:</Title>
             <Paragraph>
@@ -80,6 +95,10 @@ export const Results = () => {
         <div>
             <Line {...config} onReady={(chartInstance) => (chart = chartInstance)} />
         </div>
+        </Card>
+
+        <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
+            <Button onClick={exportToPDF} style={{ marginBottom: '5px' }}>Export the Result Section</Button>
         </Card>
     </div>
 }

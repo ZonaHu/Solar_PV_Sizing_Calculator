@@ -1,3 +1,4 @@
+import React from 'react';
 import {Card, InputNumber, Modal, Typography} from 'antd';
 import {useState} from 'react';
 import {InfoCircleTwoTone} from '@ant-design/icons';

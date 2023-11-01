@@ -3,6 +3,7 @@ import {Button, Card, Typography} from "antd";
 import { Line } from '@ant-design/charts';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import 'jspdf-autotable';
 
 const {Title, Paragraph} = Typography;
 
@@ -29,16 +30,16 @@ export const Results = () => {
         yField: 'Cost',
         xAxis: {
             title: {
-                fontSize: '12', // 文本大小
-                textAlign: 'center', // 文本对齐方式
-                fill: '#999', // 文本颜色
+                fontSize: '12',
+                textAlign: 'center',
+                fill: '#999',
             }
         },
         yAxis: {
             title: {
-                fontSize: '12', // 文本大小
-                textAlign: 'center', // 文本对齐方式
-                fill: '#999', // 文本颜色
+                fontSize: '12',
+                textAlign: 'center',
+                fill: '#999',
             }
         },
         point: {
@@ -68,8 +69,24 @@ export const Results = () => {
         const height = pdf.internal.pageSize.getHeight();
 
         pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+        const headers = ["Epsilon", "Cost", "PV1", "PV2", "Storage"];
+
+        const tableData = data.map(item => [
+            item.Epsilon,
+            item.Cost.toString(),
+            item.PV1.toString(),
+            item.PV2.toString(),
+            item.Storage.toString()
+        ]);
+
+        pdf.autoTable({
+            startY: height + 10,
+            head: [headers],
+            body: tableData,
+        });
         pdf.save("results.pdf");
     };
+
 
     return   <div id="resultsSection">
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>

@@ -26,6 +26,7 @@ const WeeklyCommutingTable = ({ numVehicles,setTripCounter,setTrips,trips,tripCo
   const handleAddTrip = async (newTrip, dayOfWeek) => {
     if (newTrip) {
       const { leaveAt, returnAt } = newTrip;
+      // eslint-disable-next-line react/prop-types
       const isLeaveTimeBetween = trips.some((row) => {
         const trip = row[dayOfWeek];
         if (trip) {
@@ -34,6 +35,7 @@ const WeeklyCommutingTable = ({ numVehicles,setTripCounter,setTrips,trips,tripCo
         return false;
       });
 
+      // eslint-disable-next-line react/prop-types
       const isReturnTimeBetween = trips.some((row) => {
         const trip = row[dayOfWeek];
         if (trip) {
@@ -47,6 +49,7 @@ const WeeklyCommutingTable = ({ numVehicles,setTripCounter,setTrips,trips,tripCo
         return Promise.reject();
       }
 
+      // eslint-disable-next-line react/prop-types
       const isOverlapped = trips.some((row) => {
         const trip = row[dayOfWeek];
         if (trip) {

@@ -1,14 +1,11 @@
 import React from 'react';
-import {Button, Card, Dropdown, Menu, Modal, Space, Typography} from 'antd';
-import {DownOutlined, InfoCircleTwoTone} from "@ant-design/icons";
+import { Card, Modal, Typography,Select,Form} from 'antd';
+import { InfoCircleTwoTone} from "@ant-design/icons";
 import {useState} from "react";
 
 const {Title, Paragraph} = Typography;
 
 const SolarPanelType = () => {
-
-    const [moduleType, setModuleType] = useState('');
-    const [arrayType, setArrayType] = useState('');
 
     const showModal5 = () => {
         setIsModalOpen5(true);
@@ -41,15 +38,15 @@ const SolarPanelType = () => {
     const itemsMod = [
         {
             label: 'Standard',
-            key: 'Standard',
+            value: 'Standard',
         },
         {
             label: 'Premium',
-            key: 'Premium',
+            value: 'Premium',
         },
         {
             label: 'Thin film',
-            key: 'Thin film',
+            value: 'Thin film',
         },
     ];
 
@@ -57,49 +54,25 @@ const SolarPanelType = () => {
     const arrayTypeItems = [
         {
             label: 'Fixed - Open Rack',
-            key: 'Fixed - Open Rack',
+            value: 'Fixed - Open Rack',
         },
         {
             label: 'Fixed - Roof Mounted',
-            key: 'Fixed - Roof Mounted',
+            value: 'Fixed - Roof Mounted',
         },
         {
             label: '1 - Axis',
-            key: '1 - Axis',
+            value: '1 - Axis',
         },
         {
             label: '1 - Axis Backtracking',
-            key: '1 - Axis Backtracking',
+            value: '1 - Axis Backtracking',
         },
         {
             label: '2 - Axis',
-            key: '2 - Axis',
+            value: '2 - Axis',
         },
     ];
-
-    const handleMMenuClick = (e) => {
-        setModuleType(e.key);
-    };
-
-    const handleAMenuClick = (e) => {
-        setArrayType(e.key);
-    };
-
-    const modTypeMenu = (
-        <Menu onClick={handleMMenuClick}>
-            {itemsMod.map(item => (
-                <Menu.Item key={item.key}>{item.label}</Menu.Item>
-            ))}
-        </Menu>
-    );
-
-    const arrayTypeMenu = (
-        <Menu onClick={handleAMenuClick}>
-            {arrayTypeItems.map(item => (
-                <Menu.Item key={item.key}>{item.label}</Menu.Item>
-            ))}
-        </Menu>
-    );
 
     return <div>
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
@@ -177,26 +150,36 @@ const SolarPanelType = () => {
 
             <Paragraph>
                 <b>Module Type *</b>
-                <Dropdown overlay={modTypeMenu}>
+                <Form.Item noStyle name={"moduleType"} rules={[{required: true}]}>
+                  <Select style={{marginLeft: '20px'}} placeholder="Select Module Type"
+                    options={itemsMod}
+                  ></Select>
+                </Form.Item>
+                {/* <Dropdown overlay={modTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
                             {moduleType || 'Select Module Type'}
                             <DownOutlined/>
                         </Space>
                     </Button>
-                </Dropdown>
+                </Dropdown> */}
             </Paragraph>
 
             <Paragraph>
                 <b>Array Type *</b>
-                <Dropdown overlay={arrayTypeMenu}>
+                <Form.Item noStyle name={"arrayType"} rules={[{required: true}]}>
+                  <Select style={{marginLeft: '20px'}} placeholder="Select Array Type"
+                    options={arrayTypeItems}
+                  ></Select>
+                </Form.Item>
+                {/* <Dropdown overlay={arrayTypeMenu}>
                     <Button style={{marginLeft: '20px'}}>
                         <Space>
                             {arrayType || 'Select Array Type'}
                             <DownOutlined/>
                         </Space>
                     </Button>
-                </Dropdown>
+                </Dropdown> */}
             </Paragraph>
         </Card>
     </div>

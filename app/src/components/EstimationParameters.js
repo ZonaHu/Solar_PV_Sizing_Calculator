@@ -192,13 +192,13 @@ export const EstimationParameters = forwardRef((props, ref) => {
           is more likely to generate infeasible results.
         </Paragraph>
         <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
-          <span style={{ marginRight: '20px' }}>Solar Panel Capacity:</span>
+          <span style={{ marginRight: '20px' }}>Maximum Solar Panel Capacity:</span>
           <Form.Item noStyle name={'solarCap'} rules={[{ required: true, message: "Solar Panel Capacity is required" }]}>
             <InputNumber style={{ width: '100px' }} min={1}  />
           </Form.Item>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
-          <span style={{ marginRight: '20px' }}>Battery Capacity:</span>
+          <span style={{ marginRight: '20px' }}>Maximum Battery Capacity:</span>
           <Form.Item noStyle name={'batteryCap'} rules={[{ required: true, message: "Battery Capacity is required" }]}>
             <InputNumber style={{ width: '100px' }} min={1}/>
           </Form.Item>

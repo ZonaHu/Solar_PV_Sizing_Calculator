@@ -18,7 +18,7 @@ export const EstimationParameters = forwardRef((props, ref) => {
   }));
 
   useEffect(()=>{
-    form.setFieldsValue({ 'cost': spPrice });
+    form.setFieldsValue({ 'PV_cost': spPrice });
   },[spPrice,form])
 
   const [batteryPrice, setBatteryPrice] = useState(0);
@@ -28,21 +28,20 @@ export const EstimationParameters = forwardRef((props, ref) => {
   }
 
   useEffect(()=>{
-    form.setFieldsValue({ 'batteryPrice': batteryPrice });
+    form.setFieldsValue({ 'B_cost': batteryPrice });
   },[batteryPrice,form])
 
   
 
   return <div>
     <Form name='step4' form={form} initialValues={{
-      daysSample: 100,
-      solarCap: 10,
-      batteryCap: 20,
+      days_in_chunk: 100,
+      pv_max: 10,
+      cells_max: 20,
       confidence: 0.8,
     }}>
       <Card style={{ width: '90%', margin: '50px', textAlign: 'left' }}>
         <Title level={3} style={{ textAlign: 'left' }}>Electricity Target Parameters</Title>
-
         <Paragraph>
           The estimation metric we use is <b> Portion of Electricity Met</b>, we maximize the portion of
           electricity that is fulfilled by the solar panels. i.e. we will provide different levels of portions and
@@ -109,7 +108,7 @@ export const EstimationParameters = forwardRef((props, ref) => {
           <span style={{ marginRight: '20px' }}>Solar Panel Cost per kW:</span>
           <Slider style={{ flexGrow: 1 }} min={500} max={5000} step={10} value={spPrice}
             onChange={handleSolarPanelPriceChange} />
-          <Form.Item noStyle name={'cost'} rules={[{ required: true, message: "Cost is required" }]}>
+          <Form.Item noStyle name={'PV_cost'} rules={[{ required: true, message: "Cost is required" }]}>
             <InputNumber style={{ marginLeft: '20px', width: '100px' }} min={500} max={5000} step={10} 
               onChange={handleSolarPanelPriceChange} />
           </Form.Item>
@@ -171,7 +170,7 @@ export const EstimationParameters = forwardRef((props, ref) => {
           <span style={{ marginRight: '20px' }}>Battery Storage Cost per kWh:</span>
           <Slider style={{ flexGrow: 1 }} min={100} max={2500} step={10} value={batteryPrice}
             onChange={handleBatteryPriceChange} />
-            <Form.Item noStyle name={'batteryPrice'} rules={[{ required: true, message: "Battery Storage Cost per kWh is required" }]}>
+            <Form.Item noStyle name={'B_cost'} rules={[{ required: true, message: "Battery Storage Cost per kWh is required" }]}>
             <InputNumber style={{ marginLeft: '20px', width: '100px' }} min={100} max={2500} step={10}
             onChange={handleBatteryPriceChange} />
             </Form.Item>
@@ -193,13 +192,13 @@ export const EstimationParameters = forwardRef((props, ref) => {
         </Paragraph>
         <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
           <span style={{ marginRight: '20px' }}>Maximum Solar Panel Capacity:</span>
-          <Form.Item noStyle name={'solarCap'} rules={[{ required: true, message: "Solar Panel Capacity is required" }]}>
+          <Form.Item noStyle name={'pv_max'} rules={[{ required: true, message: "Solar Panel Capacity is required" }]}>
             <InputNumber style={{ width: '100px' }} min={1}  />
           </Form.Item>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
           <span style={{ marginRight: '20px' }}>Maximum Battery Capacity:</span>
-          <Form.Item noStyle name={'batteryCap'} rules={[{ required: true, message: "Battery Capacity is required" }]}>
+          <Form.Item noStyle name={'cells_max'} rules={[{ required: true, message: "Maximum Battery Capacity is required" }]}>
             <InputNumber style={{ width: '100px' }} min={1}/>
           </Form.Item>
         </div>
@@ -223,8 +222,14 @@ export const EstimationParameters = forwardRef((props, ref) => {
 
         <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
           <span style={{ marginRight: '20px' }}>Days In Sample:</span>
-          <Form.Item noStyle name={'daysSample'} rules={[{ required: true, message: "Days In Sample is required" }]}>
-            <InputNumber style={{ width: '75px' }} min={1} max={365} />
+          <Form.Item noStyle name={'days_in_chunk'} rules={[{ required: true, message: "Days In Sample is required" }]}>
+            <InputNumber style={{ width: '75px' }} min={1} max={365} disabled/>
+          </Form.Item>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+          <span style={{ marginRight: '20px' }}>epsilon, [0.1, 0.9]:</span>
+          <Form.Item noStyle name={'epsilon'} rules={[{ required: true, message: "epsilon is required" }]}>
+            <InputNumber style={{ width: '75px' }} min={0.1} max={0.9} step={0.01} />
           </Form.Item>
         </div>
       </Card>

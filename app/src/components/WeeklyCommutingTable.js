@@ -1,8 +1,9 @@
 import React from 'react';
-import { Table, Typography,message } from 'antd';
+import { Table, Typography, message, Checkbox } from 'antd';
 import SingleTripModal from "./SingleTripModal";
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
+import { Form } from 'antd';
 dayjs.extend(isBetween)
 
 const { Title, Paragraph } = Typography;
@@ -12,16 +13,14 @@ function timeIsBetween(time, startTime, endTime) {
   return time.isBetween(startTime, endTime, null, '[]');
 }
 
-function isOverLab([LeaveAtA,returnAtA], [LeaveAtB,returnAtB]) {
+function isOverLab([LeaveAtA, returnAtA], [LeaveAtB, returnAtB]) {
   return timeIsBetween(LeaveAtA, LeaveAtB, returnAtB) || timeIsBetween(returnAtA, LeaveAtB, returnAtB) || timeIsBetween(LeaveAtB, LeaveAtA, returnAtA) || timeIsBetween(returnAtB, LeaveAtA, returnAtA)
 }
 
 
 // eslint-disable-next-line react/prop-types
-const WeeklyCommutingTable = ({ numVehicles,setTripCounter,setTrips,trips,tripCounter }) => {
-  const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-
-  
+const WeeklyCommutingTable = ({ numVehicles, setTripCounter, setTrips, trips, tripCounter }) => {
+  const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday"];
 
   const handleAddTrip = async (newTrip, dayOfWeek) => {
     if (newTrip) {
@@ -116,104 +115,69 @@ const WeeklyCommutingTable = ({ numVehicles,setTripCounter,setTrips,trips,tripCo
       dataIndex: 'friday',
       width: 150,
     },
-    {
-      title: 'Saturday',
-      dataIndex: 'saturday',
-      width: 150,
-    },
-    {
-      title: 'Sunday',
-      dataIndex: 'sunday',
-      width: 150,
-    },
   ];
 
   const data = [
     {
       key: "addNew",
       monday: (
-        <SingleTripModal
-          tripId={`trip-${tripCounter}`}
-          lines={numVehicles}
-          onAddTrip={async (newTrip) => handleAddTrip(newTrip, "monday")}
-        />
+        <Form.Item valuePropName="checked" noStyle name={['wfh','wfh_monday']}>
+          <Checkbox value={1}>work from home?</Checkbox>
+        </Form.Item>
       ),
       tuesday: (
-        <SingleTripModal
-          tripId={`trip-${tripCounter}`}
-          lines={numVehicles}
-          onAddTrip={(newTrip) => handleAddTrip(newTrip, "tuesday")}
-        />
+        <Form.Item valuePropName="checked" noStyle name={['wfh','wfh_tuesday']}>
+          <Checkbox value={1}>work from home?</Checkbox>
+        </Form.Item>
       ),
       wednesday: (
-        <SingleTripModal
-          tripId={`trip-${tripCounter}`}
-          lines={numVehicles}
-          onAddTrip={(newTrip) => handleAddTrip(newTrip, "wednesday")}
-        />
+        <Form.Item valuePropName="checked" noStyle name={['wfh','wfh_wednesday']}>
+          <Checkbox value={1}>work from home?</Checkbox>
+        </Form.Item>
       ),
       thursday: (
-        <SingleTripModal
-          tripId={`trip-${tripCounter}`}
-          lines={numVehicles}
-          onAddTrip={(newTrip) => handleAddTrip(newTrip, "thursday")}
-        />
+        <Form.Item valuePropName="checked" noStyle name={['wfh','wfh_thursday']}>
+          <Checkbox value={1}>work from home?</Checkbox>
+        </Form.Item>
       ),
       friday: (
-        <SingleTripModal
-          tripId={`trip-${tripCounter}`}
-          lines={numVehicles}
-          onAddTrip={(newTrip) => handleAddTrip(newTrip, "friday")}
-        />
-      ),
-      saturday: (
-        <SingleTripModal
-          tripId={`trip-${tripCounter}`}
-          lines={numVehicles}
-          onAddTrip={(newTrip) => handleAddTrip(newTrip, "saturday")}
-        />
-      ),
-      sunday: (
-        <SingleTripModal
-          tripId={`trip-${tripCounter}`}
-          lines={numVehicles}
-          onAddTrip={(newTrip) => handleAddTrip(newTrip, "sunday")}
-        />
-      ),
+        <Form.Item valuePropName="checked" noStyle name={['wfh','wfh_friday']}>
+          <Checkbox value={1}>work from home?</Checkbox>
+        </Form.Item>
+      )
     },
   ];
 
   // eslint-disable-next-line react/prop-types
-  trips.forEach((row) => {
-    const newRow = { key: row.key };
-    daysOfWeek.forEach((day) => {
-      if (row[day]) {
-        const trip = row[day];
-        newRow[day] = (
-          <span>
-            Leave at: {trip.leaveAt.format("HH:mm")} Return at: {trip.returnAt.format("HH:mm")} <br />
-            vehicle #{trip.vehicleNo} <br /> <button
-              onClick={() => {
-                setTrips((prevTrips) => {
-                  const updatedTrips = [...prevTrips];
-                  const rowIndex = updatedTrips.findIndex((row) => row[day] === trip);
-                  updatedTrips[rowIndex][day] = null;
-                  return updatedTrips;
-                });
-              }}
-            >delete</button>
-          </span>
-        );
-      }
-    });
-    data.push(newRow);
-  });
+  // trips.forEach((row) => {
+  //   const newRow = { key: row.key };
+  //   daysOfWeek.forEach((day) => {
+  //     if (row[day]) {
+  //       const trip = row[day];
+  //       newRow[day] = (
+  //         <span>
+  //           Leave at: {trip.leaveAt.format("HH:mm")} Return at: {trip.returnAt.format("HH:mm")} <br />
+  //           vehicle #{trip.vehicleNo} <br /> <button
+  //             onClick={() => {
+  //               setTrips((prevTrips) => {
+  //                 const updatedTrips = [...prevTrips];
+  //                 const rowIndex = updatedTrips.findIndex((row) => row[day] === trip);
+  //                 updatedTrips[rowIndex][day] = null;
+  //                 return updatedTrips;
+  //               });
+  //             }}
+  //           >delete</button>
+  //         </span>
+  //       );
+  //     }
+  //   });
+  //   data.push(newRow);
+  // });
 
   return <div>
-    <Title level={5} style={{ padding: '50px 50px 0px', textAlign: 'center' }}> Weekly Commuting Table </Title>
+    <Title level={5} style={{ padding: '50px 50px 0px', textAlign: 'center' }}> Weekly Commuting Status Table </Title>
     <Paragraph>
-      <b>* Please click on the &quot;Add a New Trip&quot; button to input the leave time and return time for each trip that
-        you made with your electric vehicles. </b>
+      <b>* Please select the days that you're working from home </b>
     </Paragraph>
     <Table
       columns={columns}
@@ -221,6 +185,7 @@ const WeeklyCommutingTable = ({ numVehicles,setTripCounter,setTrips,trips,tripCo
       scroll={{
         y: 500,
       }}
+      pagination={false}
     />
   </div>
 }

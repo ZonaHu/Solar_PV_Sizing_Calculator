@@ -85,27 +85,28 @@ export const MyLocation = forwardRef((props, ref) => {
       <Paragraph>
         This calculator is intended for homeowners and small to medium businesses to determine how many solar
         panels and how large a storage battery to buy to achieve a certain level of grid independence, based on
-        your location, solar panel parameters, and electricity usages. The algorithm accounts for <b> multiple
-          roof segments</b>.
+        your location, solar panel parameters, and electricity usages.
+        {/*The algorithm accounts for <b> multiple*/}
+        {/*  roof segments</b>.*/}
       </Paragraph>
 
-      <Paragraph>
-        This calculator uses <a href="https://cs.uwaterloo.ca/~fkazhami/papers/synthetic_trace_generation.pdf">machine
-          learning</a> to estimate your hourly electricity usage and a <a
-            href="https://cs.uwaterloo.ca/~fkazhami/papers/robust-practical-approaches-8.pdf">robust statistical
-          algorithm</a> to optimize the amount of solar panels and battery storage needed to fulfill a certain
-        portion of your electricity needs with minimum cost.
-      </Paragraph>
+      {/*<Paragraph>*/}
+      {/*  This calculator uses <a href="https://cs.uwaterloo.ca/~fkazhami/papers/synthetic_trace_generation.pdf">machine*/}
+      {/*    learning</a> to estimate your hourly electricity usage and a <a*/}
+      {/*      href="https://cs.uwaterloo.ca/~fkazhami/papers/robust-practical-approaches-8.pdf">robust statistical*/}
+      {/*    algorithm</a> to optimize the amount of solar panels and battery storage needed to fulfill a certain*/}
+      {/*  portion of your electricity needs with minimum cost.*/}
+      {/*</Paragraph>*/}
 
       <Paragraph>
         To use this calculator, please prepare the following:
         <li className="li-dot"><b>Your location</b>, in terms of longitude and latitude. Later this page you can
           also detect your location with your IP address or enter your city.</li>
-        <li className="li-dot"><b>Solar panel parameters</b>, including the tilt and azimuth of your solar
-          panel, and what types of panels you intend to install. See detailed instruction at page 2. The
-          parameters and instructions are provided by <a
-            href="https://pvwatts.nrel.gov/pvwatts.php">PVWatts</a>.
-        </li>
+        {/*<li className="li-dot"><b>Solar panel parameters</b>, including the tilt and azimuth of your solar*/}
+        {/*  panel, and what types of panels you intend to install. See detailed instruction at page 2. The*/}
+        {/*  parameters and instructions are provided by <a*/}
+        {/*    href="https://pvwatts.nrel.gov/pvwatts.php">PVWatts</a>.*/}
+        {/*</li>*/}
         <li className="li-dot"><b>Your electricity statements</b>, up to a year for each month. We are
           interested in how much electricity (in kWh) you used for each month during the past year, as well as
           (optionally) the electricity cost for the last entire year.
@@ -122,17 +123,17 @@ export const MyLocation = forwardRef((props, ref) => {
         <Title level={3} style={{ textAlign: 'left' }}>Your Location</Title>
         <Paragraph>
           <b>Location</b>: Your location is needed to compute how much electricity your solar panels can generate.
-          Enter your locations using one of the following ways:
         </Paragraph>
 
-        <Paragraph>
+        {/* <Paragraph>
+         Enter your locations using one of the following ways:
           <b>Autofill location using your IP address:</b>
           <Button style={{ marginLeft: '10px' }} onClick={getLocation}>Detect Location</Button>
         </Paragraph>
 
-        <Divider>OR</Divider>
+        <Divider>OR</Divider> */}
 
-        <Paragraph>
+        {/* <Paragraph>
           <b>Enter your city:</b>
           <Form.Item noStyle name={'city'} rules={[{required: true,message: "city is required"}]}>
             <Input style={{ width: '200px', borderBottom: '1px solid #000', marginLeft: '10px', borderRadius: 0 }}
@@ -141,7 +142,7 @@ export const MyLocation = forwardRef((props, ref) => {
             />
           </Form.Item>
         </Paragraph>
-        <Divider>OR</Divider>
+        <Divider>OR</Divider> */}
         <Paragraph>
           <b>Enter your latitude and longitude: </b>
           <Form.Item noStyle name={'latitude'} rules={[{required: true}]}>
@@ -183,8 +184,7 @@ export const MyLocation = forwardRef((props, ref) => {
             />
           </Form.Item>
         </Paragraph>
-
-        <Divider>OR</Divider>
+        {/* <Divider>OR</Divider>
         <Paragraph>
           <Form.Item noStyle name="fileUrl">
             <Input type='hidden'></Input>
@@ -197,7 +197,7 @@ export const MyLocation = forwardRef((props, ref) => {
           >
             Download Sample File
           </Button>
-        </Paragraph>
+        </Paragraph> */}
       </Card>
     </Form>
   </div>

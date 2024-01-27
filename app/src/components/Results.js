@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Card, Typography} from "antd";
-import { Line } from '@ant-design/charts';
+import {Line} from '@ant-design/charts';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import 'jspdf-autotable';
@@ -10,15 +10,15 @@ const {Title, Paragraph} = Typography;
 export const Results = () => {
     // those are currently placeholder data, will be computed from the backend.
     const data = [
-        { Epsilon: `0.1`, Cost: 3, PV1: 12, PV2: 20, Storage: 300  },
-        { Epsilon: '0.12', Cost: 4, PV1: 20, PV2: 20, Storage: 300  },
-        { Epsilon: '0.29', Cost: 3.5, PV1: 20, PV2: 20, Storage: 300    },
-        { Epsilon: '0.45', Cost: 5, PV1: 20, PV2: 20, Storage: 300    },
-        { Epsilon: '0.37', Cost: 4.9, PV1: 20, PV2: 20, Storage: 300    },
-        { Epsilon: '0.23', Cost: 6, PV1: 20, PV2: 20, Storage: 300    },
-        { Epsilon: '0.24', Cost: 7, PV1: 20, PV2: 20, Storage: 300    },
-        { Epsilon: '0.39', Cost: 9, PV1: 20, PV2: 20, Storage: 300    },
-        { Epsilon: '0.67', Cost: 13, PV1: 20, PV2: 20, Storage: 300    },
+        {Epsilon: `0.1`, Cost: 3, PV1: 12, PV2: 20, Storage: 300},
+        {Epsilon: '0.12', Cost: 4, PV1: 20, PV2: 20, Storage: 300},
+        {Epsilon: '0.29', Cost: 3.5, PV1: 20, PV2: 20, Storage: 300},
+        {Epsilon: '0.45', Cost: 5, PV1: 20, PV2: 20, Storage: 300},
+        {Epsilon: '0.37', Cost: 4.9, PV1: 20, PV2: 20, Storage: 300},
+        {Epsilon: '0.23', Cost: 6, PV1: 20, PV2: 20, Storage: 300},
+        {Epsilon: '0.24', Cost: 7, PV1: 20, PV2: 20, Storage: 300},
+        {Epsilon: '0.39', Cost: 9, PV1: 20, PV2: 20, Storage: 300},
+        {Epsilon: '0.67', Cost: 13, PV1: 20, PV2: 20, Storage: 300},
     ];
 
     const config = {
@@ -52,7 +52,7 @@ export const Results = () => {
             },
         },
         tooltip: {
-            fields: ['Cost','PV1','PV2','Storage'],
+            fields: ['Cost', 'PV1', 'PV2', 'Storage'],
         }
     };
 
@@ -88,9 +88,9 @@ export const Results = () => {
     };
 
 
-    return   <div id="resultsSection">
+    return <div id="resultsSection">
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
-            <Title level={3}>Sizing to meet <b>  ε * 100% </b> of your electricity load through solar energy:</Title>
+            <Title level={3}>Sizing to meet <b> ε * 100% </b> of your electricity load through solar energy:</Title>
             <Paragraph>
                 <b> pv roof segment = </b>
             </Paragraph>
@@ -106,16 +106,16 @@ export const Results = () => {
         </Card>
 
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
-        <Title level={5}>
-            How would the cost of your system vary if you chose a different value for ε?
-        </Title>
-        <div>
-            <Line {...config} onReady={(chartInstance) => (chart = chartInstance)} />
-        </div>
+            <Title level={5}>
+                How would the cost of your system vary if you chose a different value for ε?
+            </Title>
+            <div>
+                <Line {...config} onReady={(chartInstance) => (chart = chartInstance)}/>
+            </div>
         </Card>
 
         <Card style={{width: '90%', margin: '50px', textAlign: 'left'}}>
-            <Button onClick={exportToPDF} style={{ marginBottom: '5px' }}>Export the Result Section</Button>
+            <Button onClick={exportToPDF} style={{marginBottom: '5px'}}>Export the Result Section</Button>
         </Card>
     </div>
 }

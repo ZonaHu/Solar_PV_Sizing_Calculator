@@ -147,7 +147,7 @@ export const ElectricityLoadEstimation = forwardRef((props, ref) => {
         <Paragraph>
           <b> What is the charging rate for this vehicle?</b>
           <Form.Item noStyle name={'charging_rate'} rules={[{ required: true, message: "charging rate for this vehicle is required" }]}>
-            <InputNumber addonAfter={"%"}
+            <InputNumber
               style={{ width: '100px', marginLeft: '10px' }}
               min="0"
               max="100"
